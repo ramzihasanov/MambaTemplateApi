@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "b8pqF3Bl+xvYoIrfUoK36qqyPgfwB3fSuI6yFmBKTwM=",
+  "Source": "Mamba",
+  "BasePath": "_content/Mamba",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Mamba\\wwwroot",
+      "Source": "Mamba",
+      "ContentRoot": "C:\\Users\\ll novbe\\Desktop\\test\\Mamba\\Mamba\\wwwroot\\",
+      "BasePath": "_content/Mamba",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\ll novbe\\Desktop\\test\\Mamba\\Mamba\\wwwroot\\upload\\28ac0267-701c-4a8e-b3af-7f33b6418d43download.jfif",
+      "SourceId": "Mamba",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ll novbe\\Desktop\\test\\Mamba\\Mamba\\wwwroot\\",
+      "BasePath": "_content/Mamba",
+      "RelativePath": "upload/28ac0267-701c-4a8e-b3af-7f33b6418d43download.jfif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\upload\\28ac0267-701c-4a8e-b3af-7f33b6418d43download.jfif"
+    }
+  ]
+}
