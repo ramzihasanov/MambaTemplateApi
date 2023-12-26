@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0cs2Wq+cVpfxccdrnxpty/KS15Vb9IwF5u1GqpL0D1TNbIoFTjjZExmIJuf33a6+BUx4ai8hGr0IKFsKniwYnw==",
+  "dgSpecHash": "xOe0Y9BCD8otY4XnXyLx1l9z0vYoxO0BT4CVvEkENHU2CWXHqFPjNyER0cCwdNHnW9tXYtQjx7L7jwr5Dy/ZVQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ll novbe\\Desktop\\test\\Mamba\\Mamba\\Mamba.csproj",
+  "projectFilePath": "C:\\Users\\ll novbe\\Desktop\\MambaAPI\\Mamba\\Mamba\\Mamba.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ll novbe\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\ll novbe\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

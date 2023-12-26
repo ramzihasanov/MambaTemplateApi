@@ -81,6 +81,7 @@ namespace Mamba.Controllers
 
                         WorkerPosition workerPosition = new WorkerPosition()
                         {
+                            worker=worker,
                             positionId = item
 
                         };
