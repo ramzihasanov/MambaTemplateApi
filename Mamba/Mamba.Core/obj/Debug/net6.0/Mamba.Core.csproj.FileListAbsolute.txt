@@ -1,0 +1,14 @@
+C:\Users\hesen\OneDrive\İş masası\MambaTemplateApi\Mamba\Mamba.Core\bin\Debug\net6.0\Mamba.Core.deps.json
+C:\Users\hesen\OneDrive\İş masası\MambaTemplateApi\Mamba\Mamba.Core\bin\Debug\net6.0\Mamba.Core.dll
+C:\Users\hesen\OneDrive\İş masası\MambaTemplateApi\Mamba\Mamba.Core\bin\Debug\net6.0\Mamba.Core.pdb
+C:\Users\hesen\OneDrive\İş masası\MambaTemplateApi\Mamba\Mamba.Core\obj\Debug\net6.0\Mamba.Core.csproj.AssemblyReference.cache
+C:\Users\hesen\OneDrive\İş masası\MambaTemplateApi\Mamba\Mamba.Core\obj\Debug\net6.0\Mamba.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hesen\OneDrive\İş masası\MambaTemplateApi\Mamba\Mamba.Core\obj\Debug\net6.0\Mamba.Core.AssemblyInfoInputs.cache
+C:\Users\hesen\OneDrive\İş masası\MambaTemplateApi\Mamba\Mamba.Core\obj\Debug\net6.0\Mamba.Core.AssemblyInfo.cs
+C:\Users\hesen\OneDrive\İş masası\MambaTemplateApi\Mamba\Mamba.Core\obj\Debug\net6.0\Mamba.Core.csproj.CoreCompileInputs.cache
+C:\Users\hesen\OneDrive\İş masası\MambaTemplateApi\Mamba\Mamba.Core\obj\Debug\net6.0\Mamba.Core.dll
+C:\Users\hesen\OneDrive\İş masası\MambaTemplateApi\Mamba\Mamba.Core\obj\Debug\net6.0\refint\Mamba.Core.dll
+C:\Users\hesen\OneDrive\İş masası\MambaTemplateApi\Mamba\Mamba.Core\obj\Debug\net6.0\Mamba.Core.pdb
+C:\Users\hesen\OneDrive\İş masası\MambaTemplateApi\Mamba\Mamba.Core\obj\Debug\net6.0\ref\Mamba.Core.dll
+C:\Users\hesen\OneDrive\İş masası\MambaTemplateApi\Mamba\Mamba.Core\bin\Debug\net6.0\Mamba.Core.runtimeconfig.json
+C:\Users\hesen\OneDrive\İş masası\MambaTemplateApi\Mamba\Mamba.Core\obj\Debug\net6.0\Mamba.Core.genruntimeconfig.cache

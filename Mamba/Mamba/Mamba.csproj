@@ -22,4 +22,8 @@
     <Folder Include="wwwroot\upload\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Mamba.Business\Mamba.Business.csproj" />
+  </ItemGroup>
+
 </Project>

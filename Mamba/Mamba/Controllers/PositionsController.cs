@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Mamba.Business.Services.Interfaces;
 using Mamba.DAL;
 using Mamba.DTOs.PositionDto;
 using Mamba.Entites;
@@ -11,21 +12,19 @@ namespace Mamba.Controllers
     
     public class PositionsController : ControllerBase
     {
-        private readonly AppDbConrtext _appDb;
-        private readonly IMapper _mapper;
+    
+        private readonly IPositionService positionService;
 
-        public PositionsController(AppDbConrtext appDb, IMapper mapper)
+        public PositionsController(IPositionService positionService)
         {
-            _appDb = appDb;
-            _mapper = mapper;
+            this.positionService = positionService;
         }
         [HttpGet("")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesDefaultResponseType]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            var positions = _appDb.Positions.ToList();
-            var positionsdto = positions.Select(positions => _mapper.Map<PositionGetDto>(positions));// new PositionCreateDto()
+            var positionsdto = await positionService.GetAllAsync();
             
             return Ok(positionsdto);
         }
@@ -33,47 +32,34 @@ namespace Mamba.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            var positions = _appDb.Positions.FirstOrDefault(x => x.Id == id);
-            if(positions == null) return NotFound();
-            PositionGetDto positionsdto = _mapper.Map<PositionGetDto>(positions);
+            var positionsdto = await positionService.GetByIdAsync(id);
             return Ok(positionsdto);
 
         }
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public IActionResult Create(PositionCreateDto dto)
+        public async Task<IActionResult> Create(PositionCreateDto dto)
         {
-            var position = _mapper.Map<Position>(dto);
-            position.CreateDate = DateTime.UtcNow.AddHours(4);
-            position.UpdateDate = DateTime.UtcNow.AddHours(4);          
-            _appDb.Positions.Add(position);
-            _appDb.SaveChanges();
-            return Ok(position);
+            await positionService.CreateAsync(dto);
+            return Ok();
         }
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Update(PositionUpdateDto dto)
+        public async Task<IActionResult> Update(PositionUpdateDto dto)
         {
-            var position = _appDb.Positions.Find(dto.Id);
-            if (position == null) return NotFound();
-            position = _mapper.Map(dto, position);
-            position.UpdateDate = DateTime.UtcNow.AddHours(4);
-            _appDb.SaveChanges();
-            return Ok(position);
+            await positionService.UpdateAsync(dto);
+            return Ok();
         }
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var position = _appDb.Positions.Find(id);
-            if(position == null) return NotFound();
-            position.Isdeleted = !position.Isdeleted;
-            _appDb.SaveChanges();
+           await positionService.Delete(id);
             return NoContent();
         }
     }

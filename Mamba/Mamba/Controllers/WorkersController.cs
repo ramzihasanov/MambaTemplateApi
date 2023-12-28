@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
+using Mamba.Business.Services.Interfaces;
 using Mamba.DAL;
-using Mamba.DTOs.PositionDto;
 using Mamba.DTOs.WorkerDto;
 using Mamba.Entites;
 using Mamba.Helpers;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using static Humanizer.On;
 
 namespace Mamba.Controllers
 {
@@ -13,162 +13,54 @@ namespace Mamba.Controllers
     [ApiController]
     public class WorkersController : ControllerBase
     {
-        private readonly AppDbConrtext _appDb;
-        private readonly IMapper _mapper;
-        private readonly IWebHostEnvironment _env;
+        private readonly IWorkerService workerService;
 
-        public WorkersController(AppDbConrtext appDb, IMapper mapper,IWebHostEnvironment env)
+        public WorkersController(IWorkerService workerService)
         {
-            _appDb = appDb;
-            _mapper = mapper;
-            this._env = env;
+            this.workerService = workerService;
         }
         [HttpGet("")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public IActionResult GetAll()
+        public async Task< IActionResult> GetAll(string? search, int? categoryId, int? order)
         {
-            var workers = _appDb.Workers.ToList();
-            var workersdto = workers.Select(worker => _mapper.Map<WorkerGetDto>(worker));// new PositionCreateDto()
+           
+            var workersdto = await workerService.GetAllAsync();
             return Ok(workersdto);
         }
 
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            var workers = _appDb.Workers.FirstOrDefault(x => x.Id == id);
-            if(workers == null) return NotFound();
-
-            WorkerGetDto workerGetDto = _mapper.Map<WorkerGetDto>(workers);
-            return Ok(workerGetDto);
+            var workersdto = await workerService.GetByIdAsync(id);
+           
+            return Ok(workersdto);
 
         }
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public IActionResult Create([FromForm]WorkerCreateDto dto)
+        public async Task< IActionResult> Create([FromForm]WorkerCreateDto dto)
         {
-            var worker = _mapper.Map<Worker>(dto);
-            worker.CreateDate = DateTime.UtcNow.AddHours(4);
-            worker.UpdateDate = DateTime.UtcNow.AddHours(4);
-            bool check = false;
-
-            if (dto.PositionIds != null)
-            {
-                foreach (var item in dto.PositionIds)
-                {
-                    if (!_appDb.Positions.Any(t => t.Id == item))
-                    {
-                        check = true;
-                        break;
-                    }
-
-                }
-            }
-
-            if (check)
-            {
-               return BadRequest();
-            }
-            else
-            {
-                if (dto.PositionIds is not null)
-                {
-                    foreach (var item in dto.PositionIds)
-                    {
-
-                        WorkerPosition workerPosition = new WorkerPosition()
-                        {
-                            worker=worker,
-                            positionId = item
-
-                        };
-                    }
-                }
-                _appDb.Workers.Add(worker);
-            }
-            if (dto.formFile != null && dto.formFile.Length < 1048576 &&
-                !(dto.formFile.ContentType != "image/png" &&
-                dto.formFile.ContentType != "image/jpeg"))
-            {
-                string fileNmae = Helperr.GetFileName(_env.WebRootPath, "upload", dto.formFile);
-
-                string path = Path.Combine(_env.WebRootPath, "upload", worker.ImgUrl);
-                worker.ImgUrl = fileNmae;
-            }
-            else return BadRequest();
-
-            _appDb.Workers.Add(worker);
-            _appDb.SaveChanges();
-            return Ok(worker);
+            await workerService.CreateAsync(dto);
+            return Ok();
         }
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public IActionResult Update([FromForm]WorkerUpdateDto dto)
+        public async Task<IActionResult> Update([FromForm]WorkerUpdateDto dto)
         {
-            var worker = _appDb.Workers.Find(dto.Id);
-            if (worker == null) return NotFound();
-            worker = _mapper.Map(dto, worker);
-            worker.UpdateDate = DateTime.UtcNow.AddHours(4);
-            bool check = false;
-
-            if (dto.PositionIds != null)
-            {
-                foreach (var item in dto.PositionIds)
-                {
-                    if (!_appDb.Positions.Any(t => t.Id == item))
-                    {
-                        check = true;
-                        break;
-                    }
-
-                }
-            }
-
-            if (check)
-            {
-                return BadRequest();
-            }
-            else
-            {
-                if (dto.PositionIds is not null)
-                {
-                    foreach (var item in dto.PositionIds)
-                    {
-
-                        WorkerPosition workerPosition = new WorkerPosition()
-                        {
-                            positionId = item
-
-                        };
-                    }
-                }
-                _appDb.Workers.Add(worker);
-            }
-            if (dto.formFile != null && dto.formFile.Length < 1048576 &&
-                !(dto.formFile.ContentType != "image/png" &&
-                dto.formFile.ContentType != "image/jpeg"))
-            {
-                string fileNmae = Helperr.GetFileName(_env.WebRootPath, "upload", dto.formFile);
-                string path = Path.Combine(_env.WebRootPath, "upload", worker.ImgUrl);
-                worker.ImgUrl = fileNmae;
-            }
-            else return BadRequest();
-            _appDb.SaveChanges();
-            return Ok(worker);
+            await workerService.UpdateAsync(dto);
+            return Ok();
         }
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var worker = _appDb.Workers.Find(id);
-            if (worker == null) return NotFound();
-            worker.Isdeleted = !worker.Isdeleted;
-            _appDb.SaveChanges();
+            await workerService.Delete(id);
             return NoContent();
         }
     }
