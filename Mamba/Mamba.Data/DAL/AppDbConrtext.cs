@@ -1,10 +1,12 @@
 ﻿using Mamba.Configuration;
+using Mamba.Core.Entites;
 using Mamba.Entites;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Mamba.DAL
 {
-    public class AppDbConrtext : DbContext
+    public class AppDbConrtext : IdentityDbContext
     {
         public AppDbConrtext(DbContextOptions<AppDbConrtext> options) : base(options)
         { }
@@ -12,6 +14,7 @@ namespace Mamba.DAL
         public DbSet<Worker> Workers { get; set; }
         public DbSet<WorkerPosition> workerPositions { get; set; }
         public DbSet<Category> categories { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -210,3 +210,14 @@ C:\Users\hesen\OneDrive\İş masası\MambaTemplateApi\Mamba\Mamba\bin\Debug\net6
 C:\Users\hesen\OneDrive\İş masası\MambaTemplateApi\Mamba\Mamba\bin\Debug\net6.0\Mamba.Business.pdb
 C:\Users\hesen\OneDrive\İş masası\MambaTemplateApi\Mamba\Mamba\bin\Debug\net6.0\Mamba.Core.pdb
 C:\Users\hesen\OneDrive\İş masası\MambaTemplateApi\Mamba\Mamba\bin\Debug\net6.0\Mamba.Data.pdb
+C:\Users\ll novbe\Desktop\MambaAPI\Mamba\Mamba\bin\Debug\net6.0\Mamba.Business.dll
+C:\Users\ll novbe\Desktop\MambaAPI\Mamba\Mamba\bin\Debug\net6.0\Mamba.Core.dll
+C:\Users\ll novbe\Desktop\MambaAPI\Mamba\Mamba\bin\Debug\net6.0\Mamba.Data.dll
+C:\Users\ll novbe\Desktop\MambaAPI\Mamba\Mamba\bin\Debug\net6.0\Mamba.Business.pdb
+C:\Users\ll novbe\Desktop\MambaAPI\Mamba\Mamba\bin\Debug\net6.0\Mamba.Core.pdb
+C:\Users\ll novbe\Desktop\MambaAPI\Mamba\Mamba\bin\Debug\net6.0\Mamba.Data.pdb
+C:\Users\ll novbe\Desktop\MambaAPI\Mamba\Mamba\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\ll novbe\Desktop\MambaAPI\Mamba\Mamba\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\ll novbe\Desktop\MambaAPI\Mamba\Mamba\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\ll novbe\Desktop\MambaAPI\Mamba\Mamba\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\ll novbe\Desktop\MambaAPI\Mamba\Mamba\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll

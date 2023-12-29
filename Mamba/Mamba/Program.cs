@@ -1,10 +1,13 @@
 using FluentValidation.AspNetCore;
 using Mamba.Business.Services.Implementations;
 using Mamba.Business.Services.Interfaces;
+using Mamba.Core.Entites;
 using Mamba.Core.Repositories.Interfaces;
 using Mamba.DAL;
 using Mamba.Data.Repositories.Implementations;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,9 +29,20 @@ builder.Services.AddScoped<IWorkerService, WorkerService>();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddDbContext<AppDbConrtext>(opt =>
 {
-    opt.UseSqlServer("Server=DESKTOP-V775DN1;Database=Remzidatasiii;Trusted_Connection=true;");
+    opt.UseSqlServer("Server=DESKTOP-V775DN1;Database=hemidindatasi;Trusted_Connection=true;");
 });
+builder.Services.AddIdentity<User, IdentityRole>(opt =>
+{
+    opt.Password.RequiredUniqueChars = 1;
+    opt.Password.RequireNonAlphanumeric = false;
+    opt.Password.RequiredLength = 5;
+    opt.Password.RequireDigit = false;
+    opt.Password.RequireLowercase = false;
+    opt.Password.RequireUppercase = false;
+    opt.User.RequireUniqueEmail = false;
 
+
+}).AddEntityFrameworkStores<AppDbConrtext>().AddDefaultTokenProviders();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
